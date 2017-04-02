@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.aigou</groupId>
+    <artifactId>aigou-manager</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>aigou-manager-web</artifactId>
+  <packaging>war</packaging>
+ <dependencies>
+ 		<dependency>
+			<groupId>com.aigou</groupId>
+			<artifactId>aigou-manager-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+
+  <!-- jsp相关 -->
+  <!-- 网络相关的jar包 -->
+   <!--  tomcat中的jsp-api包-->
+  	<dependency>
+    	<groupId>javax.servlet.jsp</groupId>
+    	<artifactId>jsp-api</artifactId>	
+    	<scope>provided</scope>
+	</dependency>
+	<!-- jstl jsp标签 -->
+	<dependency>
+    	<groupId>javax.servlet</groupId>
+   	 	<artifactId>jstl</artifactId>
+   	 	<scope>provided</scope>
+	</dependency>
+	
+	<!-- tomcat中的servlet-api包 -->
+	<dependency>
+    	<groupId>javax.servlet</groupId>
+    	<artifactId>javax.servlet-api</artifactId>
+    	<scope>provided</scope>
+    </dependency>
+    <!-- druid连接池 -->
+    <dependency>
+    	<groupId>com.alibaba</groupId>
+    	<artifactId>druid</artifactId>
+    </dependency>
+    </dependencies>
+</project>

@@ -1,0 +1,4 @@
+com/aigou/service/UserService.class
+com/aigou/service/ItemService.class
+com/aigou/service/impl/ItemServiceImpl.class
+com/aigou/service/impl/UserServiceImpl.class

@@ -1,0 +1,252 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.aigou</groupId>
+  <artifactId>aigou-parent</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <!-- 对pom所依赖的jar包的版本号进行配置 -->
+  <properties>
+  	<!-- spring框架的版本号 -->
+	<spring.version>4.3.5.RELEASE</spring.version>
+  	
+  	<!-- mybatis框架的版本号 -->
+  	<mybatis.version>3.4.1</mybatis.version>
+  	<!-- tomcat服务器的版本号 -->
+  	<tomcat.version>2.0</tomcat.version>
+  	<!-- mysql jdbc驱动版本号 -->
+  	<mysql-jdbc.version>5.1.6</mysql-jdbc.version>
+  	<!-- druid版本号 -->
+  	<druid.version>1.0.26</druid.version>
+  	<!-- 单元测试junit版本号 -->
+  	<junit.version>4.12</junit.version>
+  	<!-- spring集成mybatis的jar包的版本号 -->
+  	<spring.mybatis.version>1.3.1</spring.mybatis.version>
+  	<!-- slf4j日志版本 -->
+  	<slf4j.version>1.7.21</slf4j.version>
+  	<!-- jsp-api版本 -->
+  	<jsp-api.version>2.2</jsp-api.version>
+  	<!-- servlet-api版本 -->
+  	<servlet-api.version>3.1.0</servlet-api.version>
+  	<!-- httpclient版本 -->
+  	<httpClient.version>4.5.2</httpClient.version>
+  	<!-- jstl版本 -->
+  	<jstl.version>1.2</jstl.version>
+  	
+  </properties>
+  
+  <dependencyManagement>
+  <dependencies>
+  <!-- spring框架的环境  -->
+  <!-- Spring 核心提供了大量扩展。可以找到使用Spring ApplicationContext特性
+  时所需的全部类，JDNI 所需的全部类，instrumentation组件以及校验Validation 方面的相关类。 -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+    <!-- spring切面编程jar包 -->
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-aop</artifactId>
+    	<version>${spring.version}</version>
+    </dependency>
+    <!-- 提供对AspectJ的支持，以便可以方便的将面向方面的功能集成进IDE中，比如Eclipse AJDT。
+外部依赖。 -->
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-aspects</artifactId>
+    	<version>${spring.version}</version>
+    </dependency>
+    <!--bean 文件是所有应用都要用到的，它包含访问配置文件、创建和管理bean 以及进行Inversion of Control / Dependency Injection（IoC/DI）操作相关的所有类。如果应用只需基本的IoC/DI 支持，引入spring-core.jar 及spring-beans.jar 文件就可以了。
+外部依赖spring-core，(CGLIB)。  -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-beans</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+     <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-webmvc</artifactId>
+    	<version>${spring.version}</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-web</artifactId>
+    	<version>${spring.version}</version>
+    </dependency>
+    <!-- Spring表达式语言 -->
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-expression</artifactId>
+    	<version>${spring.version}</version>
+    </dependency>
+    <!--整合第三方的ORM框架，如hibernate,ibatis,jdo，以及 spring的JPA实现  -->
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-orm</artifactId>
+    	<version>${spring.version}</version>
+    </dependency>
+    <!-- spring对jdbc进行简单的封装 -->
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-jdbc</artifactId>
+    	<version>${spring.version}</version>
+    </dependency>
+    <!-- spring -->
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-context-support</artifactId>
+    	<version>${spring.version}</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-context</artifactId>
+    	<version>${spring.version}</version>
+    </dependency>
+    <!-- Spring 对Object/XMl的映射支持,可以让Java与XML之间来回切换 -->
+    <dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-oxm</artifactId>
+    	<version>${spring.version}</version>
+    </dependency>
+    
+    
+    
+    
+    <!-- mybatis框架 -->
+    <dependency>
+    	<groupId>org.mybatis</groupId>
+    	<artifactId>mybatis</artifactId>
+    	<version>${mybatis.version}</version>
+    </dependency>   
+    <!--spring集成mybatis的插件jar -->
+    <dependency>
+    	<groupId>org.mybatis</groupId>
+    	<artifactId>mybatis-spring</artifactId>
+    	<version>${spring.mybatis.version}</version>
+    </dependency>
+  
+   
+    
+    <!-- mysql驱动 -->
+    <dependency>
+    	<groupId>mysql</groupId>
+    	<artifactId>mysql-connector-java</artifactId>
+    	<version>${mysql-jdbc.version}</version>
+    </dependency>
+    <!-- druid连接池 -->
+    <dependency>
+    	<groupId>com.alibaba</groupId>
+    	<artifactId>druid</artifactId>
+    	<version>${druid.version}</version>
+    </dependency>
+    <!-- junit单元测试 -->
+    <dependency>
+    	<groupId>junit</groupId>
+    	<artifactId>junit</artifactId>
+    	<version>${junit.version}</version>
+    </dependency>
+    <!-- 
+    slf4j:Simple Logging Facade for Java，为java提供的简单日志Facade。
+    Facade：门面，更底层一点说就是接口。他允许用户以自己的喜好，在工程中通过slf4j接入不同的日志系统。
+    更直观一点，slf4j是个数据线，一端嵌入程序，另一端链接日志系统，从而实现将程序中的信息导入到日志系统并记录。 
+   因此，slf4j入口就是众多接口的集合，他不负责具体的日志实现，只在编译时负责寻找合适的日志系统进行绑定。
+   具体有哪些接口，全部都定义在slf4j-api中。查看slf4j-api源码就可以发现，
+   里面除了public final class LoggerFactory类之外，都是接口定义。因此，slf4j-api 
+   -->
+   <dependency>
+   	<groupId>org.slf4j</groupId>
+   	<artifactId>slf4j-log4j12</artifactId>
+   	<version>${slf4j.version}</version>
+   </dependency>
+   
+   
+   <!-- 网络相关的jar包 -->
+   <!--  tomcat中的jsp-api包-->
+  	<dependency>
+    	<groupId>javax.servlet.jsp</groupId>
+    	<artifactId>jsp-api</artifactId>	
+    	<version>${jsp-api.version}</version>
+    	<scope>provided</scope>
+	</dependency>
+	<!-- jstl jsp标签 -->
+	<dependency>
+    	<groupId>javax.servlet</groupId>
+   	 	<artifactId>jstl</artifactId>
+    	<version>${jstl.version}</version>
+	</dependency>
+	
+	<!-- tomcat中的servlet-api包 -->
+	<dependency>
+    	<groupId>javax.servlet</groupId>
+    	<artifactId>javax.servlet-api</artifactId>
+    	<version>${servlet-api.version}</version>
+    	<scope>provided</scope>
+    </dependency>
+    <!-- HttpClient是Apache Jakarta Common下的子项目，用来提供高效的、
+    最新的、功能丰富的支持HTTP协议的客户端编程工具包，并且它支持HTTP协议最新的版本和建议 -->
+    <dependency>
+    	<groupId>org.apache.httpcomponents</groupId>
+   	 	<artifactId>httpclient</artifactId>
+    	<version>${httpClient.version}</version>
+</dependency>
+</dependencies>
+</dependencyManagement>
+<build>
+	<plugins>	
+		<!-- maven是个项目管理工具，如果我们不告诉它我们的代码要使用什么样的
+		jdk版本编译的话，它就会用maven-compiler-plugin默认的jdk版本来进
+		行处理，这样就容易出现版本不匹配的问题，以至于可能导致编译不通过的问题。
+		例如代码中要是使用上了jdk1.7的新特性，但是maven在编译的时候使用的是
+		jdk1.6的版本，那这一段代码是完全不可能编译成.class文件的。为了处理
+		这一种情况的出现，在构建maven项目的时候，我习惯性第一步就是配置maven
+		-compiler-plugin插件。 -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.6.1</version>
+			<configuration>
+				<!-- 源代码使用的版本 -->
+				<source>1.7</source>
+				<!-- 需要生成目标class文件的编译版本 -->
+				<target>1.7</target>
+				<!-- fork is enable,用于明确表示编译版本配置的可用 --> 
+				<fork>true</fork>	
+				<!-- 编码格式 -->
+				<encoding>UTF-8</encoding>
+			</configuration>
+		</plugin>
+	</plugins>
+	
+	<!--子项目可以引用的默认插件信息。该插件配置项直到被引用时才会被解析或绑定到生命周期。给定插件的任何本地配置都会覆盖这里的配置--> 
+	<pluginManagement>
+		<!--使用的插件列表 。--> 
+		<plugins>
+			<!--plugin元素包含描述插件所需要的信息。--> 
+			<plugin>
+				<!--插件在仓库里的group ID-->    
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>${tomcat.version}</version><!-- tomcat7的版本 -->
+				<configuration>
+					<port>8080</port>
+					<path>/</path>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					
+				</configuration>
+			</plugin>
+			
+		</plugins>
+	</pluginManagement>
+</build>
+
+	
+</project>

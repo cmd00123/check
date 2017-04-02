@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.aigou.mapper.UserMapper">
+	<resultMap type="com.aigou.pojo.User" id="userResultMap">
+		<id property="id" column="id" jdbcType="BIGINT"/>
+		<result property="username" column="username" jdbcType="VARCHAR"/>
+		<result property="password"  column="password" jdbcType="VARCHAR"/>
+		<result property="phone" 	 column="phone"    jdbcType="VARCHAR"/>
+		<result property="email"     column="email"    jdbcType="VARCHAR"/>
+		<result property="created"   column="created"  jdbcType="DATE"/>
+	    <result property="loginTime" column="loginTime" jdbcType="DATE"/>
+		<result property="level"     column="level"    jdbcType="INTEGER"/>
+		<result property="on_off" 	 column="on_off"   jdbcType="INTEGER"/>
+	</resultMap>
+	<!-- 增加用户 -->
+	<insert id="addUser" parameterType="com.aigou.pojo.User" >
+		<selectKey keyProperty="id" order="AFTER" resultType="LONG">
+            <!-- SELECT LAST_INSERT_ID()：得到刚insert到数据表中的记录的主键值，只适用于自增主键 -->
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+		insert into a_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="username != null">
+				username,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+			<if test="phone != null">
+				phone,
+			</if>
+			<if test="email != null">
+				email,
+			</if>
+			<if test="created != null">
+				created,
+			</if>
+			<if test="loginTime != null">
+				loginTime,
+			</if>
+			<if test="level != null">
+				level,
+			</if>
+			<if test="on_off != null">
+				on_off,
+			</if>
+		</trim>
+		values
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="username != null">
+				#{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="created != null">
+				#{created,jdbcType=DATE},
+			</if>
+			<if test="loginTime != null">
+				#{loginTime,jdbcType=DATE},
+			</if>
+			<if test="level != null">
+				#{level,jdbcType=INTEGER},
+			</if>
+			<if test="on_off != null">
+				#{on_off,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<!-- 根据用户id删除用户 -->
+	<delete id="deleteUserById" parameterType="long">
+		delete from a_user where id = #{id}
+	</delete>
+	<!-- 修改用户 -->
+	<update id="updateUser" parameterType="com.aigou.pojo.User">
+		update a_user set username = #{username},password = #{password},phone = #{phone}						
+	</update>
+	<!-- 根据id查询用户 -->
+	<select id="getUserById" parameterType="long" resultType="com.aigou.pojo.User" resultMap="userResultMap">
+		select * from a_user where id = #{id}
+	</select>
+	<!-- 查询所有用户 -->
+	<select id="getAllUser" resultType="com.aigou.pojo.User" resultMap="userResultMap">
+		select * from a_user
+	</select>
+	<select id="getUserByName" resultType="com.aigou.pojo.User" parameterType="string" resultMap="userResultMap">
+		select * from a_user where username = #{username}
+	</select>
+</mapper>
